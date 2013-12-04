@@ -1,0 +1,6 @@
+[submodule "pngquant"]
+	path = pngquant
+	url = https://github.com/pornel/pngquant
+[submodule "NBTKit"]
+	path = NBTKit
+	url = https://github.com/zydeco/NBTKit

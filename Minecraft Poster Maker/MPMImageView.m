@@ -17,7 +17,7 @@
 - (void)awakeFromNib
 {
     self.scale = 1.0;
-    for (NSString *keyPath in @[@"liq_speed",@"liq_quality",@"liq_dither_level"]) {
+    for (NSString *keyPath in @[@"liq_speed",@"liq_quality",@"liq_dither_level",@"mapVersion"]) {
         [[NSUserDefaults standardUserDefaults] addObserver:self
                                                 forKeyPath:keyPath
                                                    options:NSKeyValueObservingOptionNew
@@ -27,9 +27,9 @@
 
 - (void)dealloc
 {
-    [[NSUserDefaults standardUserDefaults] removeObserver:self forKeyPath:@"liq_speed"];
-    [[NSUserDefaults standardUserDefaults] removeObserver:self forKeyPath:@"liq_quality"];
-    [[NSUserDefaults standardUserDefaults] removeObserver:self forKeyPath:@"liq_dither_level"];
+    for (NSString *keyPath in @[@"liq_speed",@"liq_quality",@"liq_dither_level",@"mapVersion"]) {
+        [[NSUserDefaults standardUserDefaults] removeObserver:self forKeyPath:keyPath];
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -74,7 +74,7 @@
 - (void)_scaleImage:(NSNumber*)force
 {
     if (baseImage && (force.boolValue || !NSEqualSizes(super.image.size, [baseImage sizeForPosterImageWithScale:_scale]))) {
-        [super setImage:[baseImage posterImageWithScale:_scale]];
+        [super setImage:[baseImage posterImageWithScale:_scale palette:[[NSUserDefaults standardUserDefaults] integerForKey:@"mapVersion"]]];
     }
 }
 

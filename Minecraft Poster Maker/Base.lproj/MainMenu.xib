@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -11,7 +11,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="AMainMenu" systemMenu="main" id="29">
             <items>
                 <menuItem title="Minecraft Poster Maker" id="56">
@@ -655,14 +655,13 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="477" height="338"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="768"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="477" height="338"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" mirrorLayoutDirectionWhenInternationalizing="never" translatesAutoresizingMaskIntoConstraints="NO" id="fgQ-1Y-6Lc" customClass="MPMImageView">
                         <rect key="frame" x="-3" y="-3" width="483" height="344"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" selectable="YES" editable="YES" focusRingType="none" alignment="left" imageScaling="proportionallyUpOrDown" imageFrameStyle="groove" id="DUD-8V-yjq"/>
                     </imageView>
                 </subviews>
@@ -713,66 +712,62 @@
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="dSA-7j-pVY">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="121" y="129" width="400" height="193"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="768"/>
+            <rect key="contentRect" x="121" y="129" width="400" height="223"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <view key="contentView" id="fUI-Vz-s3I">
-                <rect key="frame" x="0.0" y="0.0" width="400" height="193"/>
+                <rect key="frame" x="0.0" y="0.0" width="400" height="223"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pqn-p9-nZP">
-                        <rect key="frame" x="138" y="145" width="244" height="27"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="138" y="175" width="244" height="25"/>
                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" tickMarkPosition="below" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="PU3-v8-Ldz"/>
                         <connections>
                             <binding destination="qUA-cq-yxO" name="value" keyPath="values.liq_speed" id="UP1-8w-JTO">
                                 <dictionary key="options">
-                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                    <integer key="NSNullPlaceholder" value="5"/>
-                                    <integer key="NSNotApplicablePlaceholder" value="5"/>
                                     <bool key="NSConditionallySetsEnabled" value="NO"/>
                                     <integer key="NSMultipleValuesPlaceholder" value="5"/>
                                     <integer key="NSNoSelectionPlaceholder" value="5"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="5"/>
+                                    <integer key="NSNullPlaceholder" value="5"/>
+                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                 </dictionary>
                             </binding>
                         </connections>
                     </slider>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uuh-Gx-md3">
-                        <rect key="frame" x="138" y="108" width="244" height="27"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="138" y="138" width="244" height="25"/>
                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="80" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="3qV-i8-lsD"/>
                         <connections>
                             <binding destination="qUA-cq-yxO" name="value" keyPath="values.liq_quality" id="u1G-NP-Hb1">
                                 <dictionary key="options">
-                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                    <integer key="NSNullPlaceholder" value="80"/>
-                                    <integer key="NSNotApplicablePlaceholder" value="80"/>
                                     <bool key="NSConditionallySetsEnabled" value="NO"/>
                                     <integer key="NSMultipleValuesPlaceholder" value="80"/>
                                     <integer key="NSNoSelectionPlaceholder" value="80"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="80"/>
+                                    <integer key="NSNullPlaceholder" value="80"/>
+                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                 </dictionary>
                             </binding>
                         </connections>
                     </slider>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZCv-wn-DLk">
-                        <rect key="frame" x="138" y="68" width="244" height="27"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="138" y="98" width="244" height="25"/>
                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="below" numberOfTickMarks="5" sliderType="linear" id="W8Z-Gg-8ry"/>
                         <connections>
                             <binding destination="qUA-cq-yxO" name="value" keyPath="values.liq_dither_level" id="Laq-EZ-Hsw">
                                 <dictionary key="options">
-                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                    <integer key="NSNullPlaceholder" value="1"/>
-                                    <integer key="NSNotApplicablePlaceholder" value="1"/>
                                     <bool key="NSConditionallySetsEnabled" value="NO"/>
                                     <integer key="NSMultipleValuesPlaceholder" value="1"/>
                                     <integer key="NSNoSelectionPlaceholder" value="1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="1"/>
+                                    <integer key="NSNullPlaceholder" value="1"/>
+                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                 </dictionary>
                             </binding>
                         </connections>
                     </slider>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y0Z-ew-Qpj">
-                        <rect key="frame" x="18" y="153" width="116" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="18" y="183" width="116" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Speed" id="otp-Ie-c0I">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -780,8 +775,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OUD-Hp-gus">
-                        <rect key="frame" x="18" y="113" width="116" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="18" y="143" width="116" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Quality" id="1Zh-3i-KBQ">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -789,8 +783,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lz-Je-aHK">
-                        <rect key="frame" x="18" y="73" width="116" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="18" y="103" width="116" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Dithering" id="nTp-i0-yDf">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -799,7 +792,6 @@
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pg8-1Q-8mB">
                         <rect key="frame" x="14" y="13" width="147" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Reset to Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FWf-fv-4iJ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -808,8 +800,39 @@
                             <action selector="revertToInitialValues:" target="qUA-cq-yxO" id="D3f-1J-xaF"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YGh-Yz-W9j">
+                        <rect key="frame" x="18" y="63" width="116" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Minecraft version" id="xbl-oH-eHt">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i4d-wS-uVD">
+                        <rect key="frame" x="177" y="59" width="167" height="24"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="3Sw-KA-Dv0">
+                            <font key="font" metaFont="system"/>
+                            <segments>
+                                <segment label="1.7.2-1.8" width="80"/>
+                                <segment label="1.8.1+" width="80" selected="YES" tag="1"/>
+                            </segments>
+                        </segmentedCell>
+                        <connections>
+                            <binding destination="qUA-cq-yxO" name="selectedIndex" keyPath="values.mapVersion" id="8ED-ON-flh">
+                                <dictionary key="options">
+                                    <bool key="NSConditionallySetsEnabled" value="NO"/>
+                                    <integer key="NSMultipleValuesPlaceholder" value="1"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="1"/>
+                                    <integer key="NSNullPlaceholder" value="1"/>
+                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </segmentedControl>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="346" y="284.5"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="qUA-cq-yxO"/>
         <customView id="paY-Ab-ohz">
@@ -818,7 +841,6 @@
             <subviews>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1hO-CT-RYA">
                     <rect key="frame" x="18" y="60" width="169" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Add maps to Inventory:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kjQ-NF-qtE">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -826,7 +848,6 @@
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tpk-94-xbI">
                     <rect key="frame" x="115" y="91" width="72" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Start at ID:" id="oP3-qf-0Zo">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -835,14 +856,9 @@
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dfd-Kb-3oh">
                     <rect key="frame" x="193" y="89" width="69" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="auto" drawsBackground="YES" id="IvF-jp-qyd">
-                        <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="#,##0.###" negativeFormat="#,##0.###" localizesFormat="NO" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="0" maximumFractionDigits="3" id="tIs-Nm-FRO">
-                            <real key="roundingIncrement" value="0.0"/>
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="#,##0.###" negativeFormat="#,##0.###" localizesFormat="NO" numberStyle="decimal" paddingCharacter="*" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="tIs-Nm-FRO">
                             <real key="minimum" value="0.0"/>
-                            <metadata>
-                                <bool key="localizesFormat" value="NO"/>
-                            </metadata>
                         </numberFormatter>
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -851,7 +867,6 @@
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Wb-Sa-V2t">
                     <rect key="frame" x="193" y="59" width="125" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="player name" drawsBackground="YES" id="ZpV-pL-kk9">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -860,19 +875,18 @@
                     <connections>
                         <binding destination="qUA-cq-yxO" name="value" keyPath="values.playerName" id="6Xv-Sp-iNq">
                             <dictionary key="options">
-                                <string key="NSNotApplicablePlaceholder">player name</string>
-                                <string key="NSNoSelectionPlaceholder">player name</string>
-                                <string key="NSNullPlaceholder">player name</string>
                                 <string key="NSMultipleValuesPlaceholder">player name</string>
+                                <string key="NSNoSelectionPlaceholder">player name</string>
+                                <string key="NSNotApplicablePlaceholder">player name</string>
+                                <string key="NSNullPlaceholder">player name</string>
                             </dictionary>
                         </binding>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wgx-VT-if1">
                     <rect key="frame" x="18" y="20" width="302" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="No2-fa-SWc">
-                        <font key="font" size="11" name="LucidaGrande"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <string key="title">inventory will be overwritten if necessary
 enter a player name for multiplayer maps</string>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>

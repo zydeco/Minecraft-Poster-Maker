@@ -10,7 +10,7 @@
 #import "libimagequant.h"
 #import <objc/runtime.h>
 
-static const uint8_t mapColors[] = {
+static const uint8_t mapColors172[] = {
      89, 125,  39, 255,
     109, 153,  48, 255,
     127, 178,  56, 255,
@@ -151,15 +151,160 @@ static const uint8_t mapColors[] = {
      96,   1,   0, 255,
     112,   2,   0, 255,
      59,   1,   0, 255,
+      0,   0,   0,   0
+};
+
+static const uint8_t mapColors181[] = {
+     88, 124,  39, 255,
+    108, 151,  47, 255,
+    125, 176,  55, 255,
+     66,  93,  29, 255,
+    172, 162, 114, 255,
+    210, 199, 138, 255,
+    244, 230, 161, 255,
+    128, 122,  85, 255,
+    138, 138, 138, 255,
+    169, 169, 169, 255,
+    197, 197, 197, 255,
+    104, 104, 104, 255,
+    178,   0,   0, 255,
+    217,   0,   0, 255,
+    252,   0,   0, 255,
+    133,   0,   0, 255,
+    111, 111, 178, 255,
+    136, 136, 217, 255,
+    158, 158, 252, 255,
+     83,  83, 133, 255,
+    116, 116, 116, 255,
+    142, 142, 142, 255,
+    165, 165, 165, 255,
+     87,  87,  87, 255,
+      0,  86,   0, 255,
+      0, 105,   0, 255,
+      0, 123,   0, 255,
+      0,  64,   0, 255,
+    178, 178, 178, 255,
+    217, 217, 217, 255,
+    252, 252, 252, 255,
+    133, 133, 133, 255,
+    114, 117, 127, 255,
+    139, 142, 156, 255,
+    162, 166, 182, 255,
+     85,  87,  96, 255,
+    105,  75,  53, 255,
+    128,  93,  65, 255,
+    149, 108,  76, 255,
+     78,  56,  39, 255,
+     78,  78,  78, 255,
+     95,  95,  95, 255,
+    111, 111, 111, 255,
+     58,  58,  58, 255,
+     44,  44, 178, 255,
+     54,  54, 217, 255,
+     63,  63, 252, 255,
+     33,  33, 133, 255,
+     99,  83,  49, 255,
+    122, 101,  61, 255,
+    141, 118,  71, 255,
+     74,  62,  38, 255,
+    178, 175, 170, 255,
+    217, 214, 208, 255,
+    252, 249, 242, 255,
+    133, 131, 127, 255,
+    150,  88,  36, 255,
+    184, 108,  43, 255,
+    213, 125,  50, 255,
+    113,  66,  27, 255,
+    124,  52, 150, 255,
+    151,  64, 184, 255,
+    176,  75, 213, 255,
+     93,  39, 113, 255,
+     71, 107, 150, 255,
+     87, 130, 184, 255,
+    101, 151, 213, 255,
+     53,  80, 113, 255,
+    159, 159,  36, 255,
+    195, 195,  43, 255,
+    226, 226,  50, 255,
+    120, 120,  27, 255,
+     88, 142,  17, 255,
+    108, 174,  21, 255,
+    125, 202,  25, 255,
+     66, 107,  13, 255,
+    168,  88, 115, 255,
+    206, 108, 140, 255,
+    239, 125, 163, 255,
+    126,  66,  86, 255,
+     52,  52,  52, 255,
+     64,  64,  64, 255,
+     75,  75,  75, 255,
+     39,  39,  39, 255,
+    107, 107, 107, 255,
+    130, 130, 130, 255,
+    151, 151, 151, 255,
+     80,  80,  80, 255,
+     52,  88, 107, 255,
+     64, 108, 130, 255,
+     75, 125, 151, 255,
+     39,  66,  80, 255,
+     88,  43, 124, 255,
+    108,  53, 151, 255,
+    125,  62, 176, 255,
+     66,  33,  93, 255,
+     36,  52, 124, 255,
+     43,  64, 151, 255,
+     50,  75, 176, 255,
+     27,  39,  93, 255,
+     71,  52,  36, 255,
+     87,  64,  43, 255,
+    101,  75,  50, 255,
+     53,  39,  27, 255,
+     71,  88,  36, 255,
+     87, 108,  43, 255,
+    101, 125,  50, 255,
+     53,  66,  27, 255,
+    107,  36,  36, 255,
+    130,  43,  43, 255,
+    151,  50,  50, 255,
+     80,  27,  27, 255,
+     17,  17,  17, 255,
+     21,  21,  21, 255,
+     25,  25,  25, 255,
+     13,  13,  13, 255,
+    174, 166,  53, 255,
+    212, 203,  65, 255,
+    247, 235,  76, 255,
+    130, 125,  39, 255,
+     63, 152, 148, 255,
+     78, 186, 181, 255,
+     91, 216, 210, 255,
+     47, 114, 111, 255,
+     51,  89, 178, 255,
+     62, 109, 217, 255,
+     73, 129, 252, 255,
+     39,  66, 133, 255,
+      0, 151,  39, 255,
+      0, 185,  49, 255,
+      0, 214,  57, 255,
+      0, 113,  30, 255,
+     90,  59,  34, 255,
+    110,  73,  41, 255,
+    127,  85,  48, 255,
+     67,  44,  25, 255,
+     78,   1,   0, 255,
+     95,   1,   0, 255,
+    111,   2,   0, 255,
+     58,   1,   0, 255,
+      0,   0,   0,   0
 };
 
 static const char *mapDataKey = "mcMapBytes";
 
-uint8_t mapColorIndex(uint8_t r, uint8_t g, uint8_t b)
+uint8_t mapColorIndex(uint8_t r, uint8_t g, uint8_t b, const uint8_t *mapColors)
 {
     uint8_t index = 0;
     int distance = 65535;
-    for (int i=0; i < sizeof(mapColors)/4; i++) {
+    for (int i=0; mapColors[4*i+3]; i++) {
         int curDistance = abs(mapColors[4*i] - r) + abs(mapColors[4*i+1] - g) + abs(mapColors[4*i+2] - b);
         if (curDistance == 0) return i;
         if (curDistance < distance) {
@@ -183,7 +328,7 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
     return NSMakeSize((NSUInteger)(self.size.width*scale + 127) &~ 127, (NSUInteger)(self.size.height*scale + 127) &~ 127);
 }
 
-- (NSImage*)posterImageWithScale:(CGFloat)scale
+- (NSImage*)posterImageWithScale:(CGFloat)scale palette:(MinecraftPosterPalette)palette
 {
     CGImageRef baseImage = [self CGImageForProposedRect:NULL context:NULL hints:NULL];
     // round size up to multiple of 128
@@ -197,12 +342,22 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
     CGContextDrawImage(ctx, CGRectMake(0, 0, dstSize.width, dstSize.height), baseImage);
     NSMutableData *mapData = nil;
     
+    // get palette - default to newest
+    const uint8_t *mapColors = mapColors181;
+    if (palette == MinecraftPosterPalette172) {
+        mapColors = mapColors172;
+    }
+    int numColors = 0;
+    for (int i=0; mapColors[4*i+3]; i++) {
+        numColors++;
+    }
+    
     // create liq images
     liq_attr *attr = liq_attr_create();
     liq_set_speed(attr, (int)CLAMP([[NSUserDefaults standardUserDefaults] integerForKey:@"liq_speed"], 1, 10));
     liq_set_quality(attr, 0, (int)CLAMP([[NSUserDefaults standardUserDefaults] integerForKey:@"liq_quality"], 0, 100));
     //liq_set_log_callback(attr, logcb, NULL);
-    liq_image *paletteImage = liq_image_create_rgba(attr, (void*)mapColors, sizeof(mapColors)/4, 1, 0);
+    liq_image *paletteImage = liq_image_create_rgba(attr, (void*)mapColors, numColors, 1, 0);
     liq_image *inputImage = liq_image_create_rgba(attr, (void*)CGBitmapContextGetData(ctx), (int)CGBitmapContextGetWidth(ctx), (int)CGBitmapContextGetHeight(ctx), 0);
     liq_result *remap = liq_quantize_image(attr, paletteImage);
     
@@ -216,7 +371,7 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
         const liq_palette *palette = liq_get_palette(remap);
         uint8_t palette_map[256];
         for (int i=0; i < palette->count; i++) {
-            palette_map[i] = mapColorIndex(palette->entries[i].r, palette->entries[i].g, palette->entries[i].b);
+            palette_map[i] = mapColorIndex(palette->entries[i].r, palette->entries[i].g, palette->entries[i].b, mapColors);
         }
         
         // redraw in same context and generate map data

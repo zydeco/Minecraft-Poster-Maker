@@ -8,11 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef enum : NSUInteger {
+    MinecraftPosterPalette172,
+    MinecraftPosterPalette181
+} MinecraftPosterPalette;
+
 @interface NSImage (MinecraftPosterMaker)
 
 @property (nonatomic, readonly) NSArray* mapData;
 
 - (NSSize)sizeForPosterImageWithScale:(CGFloat)scale;
-- (NSImage*)posterImageWithScale:(CGFloat)scale;
+- (NSImage*)posterImageWithScale:(CGFloat)scale palette:(MinecraftPosterPalette)palette;
 
 @end

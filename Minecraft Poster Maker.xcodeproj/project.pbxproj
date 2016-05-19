@@ -16,7 +16,7 @@
 		28B72B27184D12F6001AC8A5 /* nearest.c in Sources */ = {isa = PBXBuildFile; fileRef = 28B72B1D184D12F6001AC8A5 /* nearest.c */; };
 		28B72B28184D12F6001AC8A5 /* pam.c in Sources */ = {isa = PBXBuildFile; fileRef = 28B72B1F184D12F6001AC8A5 /* pam.c */; };
 		28B72B29184D12F6001AC8A5 /* viter.c in Sources */ = {isa = PBXBuildFile; fileRef = 28B72B21184D12F6001AC8A5 /* viter.c */; };
-		28E0A1F2184F9ED200B5B77E /* NBTKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 28F5BC43184B9FC600BA9A69 /* NBTKit.framework */; };
+		28E0A1F2184F9ED200B5B77E /* NBTKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 28F5BC43184B9FC600BA9A69 /* NBTKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		28E0A1F4184FB34A00B5B77E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 28E0A1F3184FB34A00B5B77E /* Credits.rtf */; };
 		28F5BC0A184B9CF100BA9A69 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F5BC09184B9CF100BA9A69 /* Cocoa.framework */; };
 		28F5BC14184B9CF100BA9A69 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28F5BC12184B9CF100BA9A69 /* InfoPlist.strings */; };
@@ -303,7 +303,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MPM;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = namedfork;
 				TargetAttributes = {
 					28F5BC05184B9CF100BA9A69 = {
@@ -464,6 +464,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -524,6 +525,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Minecraft Poster Maker/Minecraft Poster Maker-Prefix.pch";
 				INFOPLIST_FILE = "Minecraft Poster Maker/Minecraft Poster Maker-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.namedfork.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -537,6 +539,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Minecraft Poster Maker/Minecraft Poster Maker-Prefix.pch";
 				INFOPLIST_FILE = "Minecraft Poster Maker/Minecraft Poster Maker-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.namedfork.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -558,6 +561,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Minecraft Poster MakerTests/Minecraft Poster MakerTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.namedfork.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -576,6 +580,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Minecraft Poster Maker/Minecraft Poster Maker-Prefix.pch";
 				INFOPLIST_FILE = "Minecraft Poster MakerTests/Minecraft Poster MakerTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.namedfork.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

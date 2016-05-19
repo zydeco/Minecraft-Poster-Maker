@@ -127,12 +127,14 @@ extern float greenScale;
     }
     
     // add to inventory (if less than 36 maps)
+    NSInteger mapVersion = [[NSUserDefaults standardUserDefaults] integerForKey:@"mapVersion"];
+    id mapID = mapVersion == 0 ? NBTShort(358) : @"minecraft:filled_map";
     if (maps.count <= 36 && addToInventory) {
         // add to level.dat inventory
         NSString *levelPath = [worldPath stringByAppendingPathComponent:@"level.dat"];
         NSMutableDictionary *levelDat = [NBTKit NBTWithFile:levelPath name:NULL options:NBTCompressed error:NULL];
         if (levelDat && levelDat[@"Data"][@"Player"]) {
-            [self addMaps:NSMakeRange(startID, maps.count) toInventory:levelDat[@"Data"][@"Player"][@"Inventory"]];
+            [self addMaps:NSMakeRange(startID, maps.count) toInventory:levelDat[@"Data"][@"Player"][@"Inventory"] mapID:mapID];
             [NBTKit writeNBT:levelDat name:nil toFile:levelPath options:NBTCompressed error:NULL];
         }
         
@@ -140,7 +142,7 @@ extern float greenScale;
         NSString *playerPath = [[[worldPath stringByAppendingPathComponent:@"players"] stringByAppendingPathComponent:playerName] stringByAppendingPathExtension:@"dat"];
         NSMutableDictionary *playerDat = [NBTKit NBTWithFile:playerPath name:NULL options:NBTCompressed error:NULL];
         if (playerDat) {
-            [self addMaps:NSMakeRange(startID, maps.count) toInventory:playerDat[@"Inventory"]];
+            [self addMaps:NSMakeRange(startID, maps.count) toInventory:playerDat[@"Inventory"] mapID:mapID];
             [NBTKit writeNBT:playerDat name:@"Player" toFile:playerPath options:NBTCompressed error:NULL];
         }
     }
@@ -148,7 +150,7 @@ extern float greenScale;
     return startID;
 }
 
-- (void)addMaps:(NSRange)mapRange toInventory:(NSMutableArray*)inventory
+- (void)addMaps:(NSRange)mapRange toInventory:(NSMutableArray*)inventory mapID:(id)mapID
 {
     // get free slots
     NSMutableIndexSet *freeSlots = [NSMutableIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 36)];
@@ -167,7 +169,7 @@ extern float greenScale;
     // add items
     for (NSUInteger i=0; i < mapRange.length; i++) {
         [inventory addObject:@{@"Slot": NBTByte(freeSlots.firstIndex),
-                               @"id": NBTShort(358),
+                               @"id": mapID,
                                @"Damage": NBTShort(mapRange.location+i),
                                @"Count": NBTByte(1)
                                }];

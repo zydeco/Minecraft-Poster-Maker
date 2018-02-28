@@ -5,7 +5,7 @@ Convert images into Minecraft maps to use as posters.
 ### Requirements
 
 * Mac OS X 10.8 or newer
-* Minecraft 1.7.2 (previous versions will crash with new maps)
+* Minecraft Java Edition 1.7.2 or newer
 
 ### Features
 

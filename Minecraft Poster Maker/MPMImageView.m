@@ -17,7 +17,7 @@
 - (void)awakeFromNib
 {
     self.scale = 1.0;
-    for (NSString *keyPath in @[@"liq_speed",@"liq_quality",@"liq_dither_level",@"mapVersion"]) {
+    for (NSString *keyPath in @[@"liq_speed",@"liq_quality",@"liq_dither_level",@"mapVersion",@"useFlatPalette"]) {
         [[NSUserDefaults standardUserDefaults] addObserver:self
                                                 forKeyPath:keyPath
                                                    options:NSKeyValueObservingOptionNew
@@ -27,7 +27,7 @@
 
 - (void)dealloc
 {
-    for (NSString *keyPath in @[@"liq_speed",@"liq_quality",@"liq_dither_level",@"mapVersion"]) {
+    for (NSString *keyPath in @[@"liq_speed",@"liq_quality",@"liq_dither_level",@"mapVersion",@"useFlatPalette"]) {
         [[NSUserDefaults standardUserDefaults] removeObserver:self forKeyPath:keyPath];
     }
 }
@@ -66,10 +66,10 @@
     }
 }
 
-- (NSImage *)image
+/*- (NSImage *)image
 {
     return baseImage;
-}
+}*/
 
 - (void)_scaleImage:(NSNumber*)force
 {

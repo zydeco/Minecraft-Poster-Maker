@@ -9,8 +9,9 @@
 #import <Cocoa/Cocoa.h>
 
 typedef enum : NSUInteger {
-    MinecraftPosterPalette172,
-    MinecraftPosterPalette181
+    MinecraftPosterPalette1_7_2,
+    MinecraftPosterPalette1_8_1,
+    MinecraftPosterPalette1_12
 } MinecraftPosterPalette;
 
 @interface NSImage (MinecraftPosterMaker)

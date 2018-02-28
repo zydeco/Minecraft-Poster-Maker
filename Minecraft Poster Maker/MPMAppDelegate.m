@@ -18,7 +18,9 @@ extern float greenScale;
     NSDictionary *defaults = @{@"liq_speed": @8,
                                @"liq_quality": @80,
                                @"liq_dither_level": @1.0,
-                               @"mapVersion": @1};
+                               @"mapVersion": @2,
+                               @"useFlatPalette": @NO
+                               };
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:defaults];
     

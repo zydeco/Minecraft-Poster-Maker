@@ -78,6 +78,9 @@
 /* Begin PBXFileReference section */
 		284CB27B184BA69200192352 /* MPMImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMImageView.h; sourceTree = "<group>"; };
 		284CB27C184BA69200192352 /* MPMImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMImageView.m; sourceTree = "<group>"; };
+		287A8A6E2046FAB800D0ECFA /* map_colors_1_7_2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = map_colors_1_7_2.h; sourceTree = "<group>"; };
+		287A8A702046FB0000D0ECFA /* map_colors_1_8_1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = map_colors_1_8_1.h; sourceTree = "<group>"; };
+		287A8A712046FF2500D0ECFA /* map_colors_1_12.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = map_colors_1_12.h; sourceTree = "<group>"; };
 		28B72B0F184CFCB3001AC8A5 /* NSImage+MinecraftPosterMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+MinecraftPosterMaker.h"; sourceTree = "<group>"; };
 		28B72B10184CFCB3001AC8A5 /* NSImage+MinecraftPosterMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MinecraftPosterMaker.m"; sourceTree = "<group>"; };
 		28B72B15184D12F6001AC8A5 /* blur.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = blur.c; sourceTree = "<group>"; };
@@ -213,6 +216,9 @@
 				28B72B10184CFCB3001AC8A5 /* NSImage+MinecraftPosterMaker.m */,
 				28F5BC21184B9CF200BA9A69 /* Images.xcassets */,
 				28F5BC10184B9CF100BA9A69 /* Supporting Files */,
+				287A8A6E2046FAB800D0ECFA /* map_colors_1_7_2.h */,
+				287A8A702046FB0000D0ECFA /* map_colors_1_8_1.h */,
+				287A8A712046FF2500D0ECFA /* map_colors_1_12.h */,
 			);
 			path = "Minecraft Poster Maker";
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 				TargetAttributes = {
 					28F5BC05184B9CF100BA9A69 = {
 						DevelopmentTeam = UJXNDZ5TNU;
+						ProvisioningStyle = Automatic;
 					};
 					28F5BC26184B9CF200BA9A69 = {
 						TestTargetID = 28F5BC05184B9CF100BA9A69;
@@ -521,13 +528,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = UJXNDZ5TNU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Minecraft Poster Maker/Minecraft Poster Maker-Prefix.pch";
 				INFOPLIST_FILE = "Minecraft Poster Maker/Minecraft Poster Maker-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.namedfork.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -536,13 +546,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = UJXNDZ5TNU;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Minecraft Poster Maker/Minecraft Poster Maker-Prefix.pch";
 				INFOPLIST_FILE = "Minecraft Poster Maker/Minecraft Poster Maker-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.namedfork.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

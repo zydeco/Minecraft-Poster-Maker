@@ -14,6 +14,7 @@ Convert images into Minecraft maps to use as posters.
 * Optionally adds maps to a user's inventory
 * Adjust conversion speed, dithering and quality in Preferences
 * Choose the Map ID, or have it chosen automatically
+* Export as schematic
 
 ### Usage
 

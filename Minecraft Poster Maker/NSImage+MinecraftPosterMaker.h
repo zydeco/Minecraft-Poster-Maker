@@ -17,6 +17,7 @@ typedef enum : NSUInteger {
 @interface NSImage (MinecraftPosterMaker)
 
 @property (nonatomic, readonly) NSArray* mapData;
+@property (nonatomic, readonly) NSData* schematicData;
 
 - (NSSize)sizeForPosterImageWithScale:(CGFloat)scale;
 - (NSImage*)posterImageWithScale:(CGFloat)scale palette:(MinecraftPosterPalette)palette;

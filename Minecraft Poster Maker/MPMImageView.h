@@ -13,5 +13,6 @@
 @property (nonatomic, assign) CGFloat scale;
 @property (nonatomic, readonly) NSSize posterSize;
 @property (nonatomic, readonly) NSArray* mapData;
+@property (nonatomic, readonly) NSData* schematicData;
 
 @end

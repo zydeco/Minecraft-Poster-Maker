@@ -211,4 +211,25 @@ extern float greenScale;
     return (url.isFileURL && [self isMinecraftWorld:url.path]);
 }
 
+#pragma Export Schematic
+
+- (IBAction)exportSchematic:(id)sender
+{
+    NSData *schematicData = self.imageView.schematicData;
+    
+    if (schematicData == nil) {
+        NSBeep();
+        return;
+    }
+    
+    NSSavePanel *savePanel = [NSSavePanel savePanel];
+    savePanel.allowedFileTypes = @[@"schematic"];
+    
+    [savePanel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse result) {
+        if (result == NSFileHandlingPanelOKButton) {
+            [schematicData writeToURL:savePanel.URL options:0 error:NULL];
+        }
+    }];
+}
+
 @end

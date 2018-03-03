@@ -8,11 +8,66 @@
 
 #import "NSImage+MinecraftPosterMaker.h"
 #import "libimagequant.h"
+#import "NBTKit/NBTKit.h"
 #import <objc/runtime.h>
 
 #include "map_colors_1_7_2.h"
 #include "map_colors_1_8_1.h"
 #include "map_colors_1_12.h"
+
+static const uint16_t mapColorToBlocks[] = { // high byte = data, low byte = block
+    0x02, // Grass
+    0x18, // Sandstone
+    0x1E, // Cobweb
+    0x98, // Redstpme
+    0xAE, // Packed Ice
+    0x2A, // Iron
+    0x712, // Leaves
+    0x50, // Snow
+    0x52, // Clay
+    0x03, // Dirt
+    0x04, // Cobblestone
+    0x09, // Water
+    0x05, // Oak Wood
+    0x9B, // Quartz
+    0x123, // Orange wool
+    0x223, // Magenta wool
+    0x323, // Light blue wool
+    0x423, // Yellow wool
+    0x523, // Lime wool
+    0x623, // Pink wool
+    0x723, // Gray wool
+    0x823, // Light gray wool
+    0x923, // Cyan wool
+    0xA23, // Purple wool
+    0xB23, // Blue wool
+    0xC23, // Brown wool
+    0xD23, // Green wool
+    0xE23, // Red wool
+    0xF23, // Black wool
+    0x29, // Gold
+    0x39, // Diamond
+    0x16, // Lapis
+    0x85, // Emerald
+    0x203, // Podzol
+    0x57, // Netherrack
+    0x09F, // White Terracotta
+    0x19F, // Orange Terracotta
+    0x29F, // Magenta Terracotta
+    0x39F, // Light Blue Terracotta
+    0x49F, // Yellow Terracotta
+    0x59F, // Lime Terracotta
+    0x69F, // Pink Terracotta
+    0x79F, // Gray Terracotta
+    0x89F, // Light Gray Terracotta
+    0x99F, // Cyan Terracotta
+    0xA9F, // Purple Terracotta
+    0xB9F, // Blue Terracotta
+    0xC9F, // Brown Terracotta
+    0xD9F, // Green Terracotta
+    0xE9F, // Red Terracotta
+    0xF9F // Black Terracotta
+};
 
 static const char *mapDataKey = "mcMapBytes";
 
@@ -73,12 +128,10 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
     // use flat palette?
     uint8_t *flatPalette = NULL;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"useFlatPalette"]) {
-        numColors /= 4;
-        flatPalette = calloc(numColors, 4);
-        for (int i= 0; i < numColors; i++) {
+        flatPalette = calloc(numColors / 4, 4);
+        for (int i= 0; i < numColors / 4; i++) {
             memcpy(&flatPalette[4*i], &mapColors[4*(4*i+2)], 4);
         }
-        mapColors = flatPalette;
     }
     
     // create liq images
@@ -86,7 +139,7 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
     liq_set_speed(attr, (int)CLAMP([[NSUserDefaults standardUserDefaults] integerForKey:@"liq_speed"], 1, 10));
     liq_set_quality(attr, 0, (int)CLAMP([[NSUserDefaults standardUserDefaults] integerForKey:@"liq_quality"], 0, 100));
     //liq_set_log_callback(attr, logcb, NULL);
-    liq_image *paletteImage = liq_image_create_rgba(attr, (void*)mapColors, numColors, 1, 0);
+    liq_image *paletteImage = liq_image_create_rgba(attr, (void*)(flatPalette ?: mapColors), flatPalette ? numColors / 4 : numColors, 1, 0);
     liq_image *inputImage = liq_image_create_rgba(attr, (void*)CGBitmapContextGetData(ctx), (int)CGBitmapContextGetWidth(ctx), (int)CGBitmapContextGetHeight(ctx), 0);
     liq_result *remap = liq_quantize_image(attr, paletteImage);
     
@@ -126,7 +179,7 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
     
     // associate data object
     objc_setAssociatedObject(resultImage, mapDataKey, mapData.copy, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
+
     if (flatPalette) {
         free(flatPalette);
     }
@@ -151,6 +204,42 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
         }
     }
     return maps.copy;
+}
+
+- (NSData*)schematicData
+{
+    NSData *mapData = objc_getAssociatedObject(self, mapDataKey);
+    if (mapData == nil) return nil;
+    size_t width = self.size.width;
+    size_t length = self.size.height;
+    NSUInteger numBlocks = width * length;
+    NSMutableData *blocks = [NSMutableData dataWithLength:numBlocks * 2];
+    NSMutableData *data = [NSMutableData dataWithLength:numBlocks * 2];
+    const uint8_t *mapBytes = mapData.bytes;
+    uint8_t *blockBytes = blocks.mutableBytes;
+    uint8_t *dataBytes = data.mutableBytes;
+    for (int x=0; x < width; x++) {
+        for (int z=0; z < length; z++) {
+            uint8_t mapValue = mapBytes[(z*length) + x];
+            uint16_t blockValue = mapColorToBlocks[(mapValue / 4) - 1];
+            blockBytes[(0*length + z)*width + x] = 1; // stone layer
+            blockBytes[(1*length + z)*width + x] = blockValue & 0x00FF;
+            dataBytes[(1*length + z)*width + x] = (blockValue & 0x0F00) >> 8;
+        }
+    }
+    
+    NSDictionary *schematic = @{@"Height": NBTShort(2),
+                                @"Width": NBTShort(self.size.width),
+                                @"Length": NBTShort(self.size.height),
+                                @"Materials": @"Alpha",
+                                @"Entities": @[],
+                                @"TileEntities": @[],
+                                @"Blocks": blocks,
+                                @"Data": data
+                                };
+    NSError *error = nil;
+    NSData *schematicData = [NBTKit dataWithNBT:schematic name:@"Schematic" options:0 error:&error];
+    return schematicData;
 }
 
 @end

@@ -83,6 +83,11 @@
     return [super image].mapData;
 }
 
+- (NSData *)schematicData
+{
+    return [super image].schematicData;
+}
+
 - (BOOL)resignFirstResponder
 {
     return NO;

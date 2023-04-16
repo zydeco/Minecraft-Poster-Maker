@@ -110,15 +110,29 @@ typedef enum : NSInteger {
     // find start ID
     NSString *idCountsPath = [dataPath stringByAppendingPathComponent:@"idcounts.dat"];
     NSDictionary *idCounts = [NBTKit NBTWithFile:idCountsPath name:NULL options:0 error:NULL];
-    NSInteger lastMap = idCounts ? [idCounts[@"map"] integerValue] : -1;
+    NSInteger lastMap = -1;
+    if (idCounts == nil) {
+        // new compressed format
+        idCounts = [NBTKit NBTWithFile:idCountsPath name:NULL options:NBTCompressed error:NULL];
+    }
+    if (idCounts && idCounts[@"map"]) {
+        // old format
+        lastMap = [idCounts[@"map"] integerValue];
+    } else if (idCounts && idCounts[@"data"]) {
+        // new format
+        NSDictionary *data = idCounts[@"data"];
+        lastMap = [data[@"map"] integerValue];
+    }
     if (startID < 0) {
         startID = lastMap + 1;
     }
     
     // write maps
     for (NSUInteger i=0; i < maps.count; i++) {
+        // no DataVersion, seems to work fine
         NSDictionary *nbt = @{@"data": @{@"scale": NBTByte(0),
                                          @"dimension": NBTByte(0),
+                                         @"locked": NBTByte(1),
                                          @"height": NBTShort(128),
                                          @"width": NBTShort(128),
                                          @"xCenter": NBTInt(INT32_MAX),
@@ -131,26 +145,35 @@ typedef enum : NSInteger {
     
     // write idcounts
     if (startID+(NSInteger)maps.count-1 > lastMap) {
-        [NBTKit writeNBT:@{@"map": NBTShort(startID+maps.count-1)} name:nil toFile:idCountsPath options:0 error:NULL];
+        NSInteger lastId = startID+maps.count-1;
+        id dataVersion = idCounts[@"DataVersion"];
+        if (dataVersion != nil) {
+            // new format with data version, compressed
+            [NBTKit writeNBT:@{@"DataVersion": dataVersion, @"data": @{@"map": NBTInt((int)lastId)}} name:nil toFile:idCountsPath options:NBTCompressed error:NULL];
+        } else {
+            // old format
+            // FIXME: 1.13 uses old format, but int instead of short
+            [NBTKit writeNBT:@{@"map": NBTShort(lastId)} name:nil toFile:idCountsPath options:0 error:NULL];
+        }
     }
     
     // add to inventory (if less than 36 maps)
     NSInteger mapVersion = [[NSUserDefaults standardUserDefaults] integerForKey:@"mapVersion"];
-    id mapID = mapVersion == 0 ? NBTShort(358) : @"minecraft:filled_map";
     if (maps.count <= 36 && addToInventory) {
         // add to level.dat inventory
         NSString *levelPath = [worldPath stringByAppendingPathComponent:@"level.dat"];
         NSMutableDictionary *levelDat = [NBTKit NBTWithFile:levelPath name:NULL options:NBTCompressed error:NULL];
         if (levelDat && levelDat[@"Data"][@"Player"]) {
-            [self addMaps:NSMakeRange(startID, maps.count) toInventory:levelDat[@"Data"][@"Player"][@"Inventory"] mapID:mapID];
+            [self addMaps:NSMakeRange(startID, maps.count) toInventory:levelDat[@"Data"][@"Player"][@"Inventory"] mapVersion:mapVersion];
             [NBTKit writeNBT:levelDat name:nil toFile:levelPath options:NBTCompressed error:NULL];
         }
         
         // add to player inventory
+        // TODO: newer versions use playerdata/<uuid>.dat instead of players/<name>.dat
         NSString *playerPath = [[[worldPath stringByAppendingPathComponent:@"players"] stringByAppendingPathComponent:playerName] stringByAppendingPathExtension:@"dat"];
         NSMutableDictionary *playerDat = [NBTKit NBTWithFile:playerPath name:NULL options:NBTCompressed error:NULL];
         if (playerDat) {
-            [self addMaps:NSMakeRange(startID, maps.count) toInventory:playerDat[@"Inventory"] mapID:mapID];
+            [self addMaps:NSMakeRange(startID, maps.count) toInventory:playerDat[@"Inventory"] mapVersion:mapVersion];
             [NBTKit writeNBT:playerDat name:@"Player" toFile:playerPath options:NBTCompressed error:NULL];
         }
     }
@@ -158,7 +181,7 @@ typedef enum : NSInteger {
     return startID;
 }
 
-- (void)addMaps:(NSRange)mapRange toInventory:(NSMutableArray*)inventory mapID:(id)mapID
+- (void)addMaps:(NSRange)mapRange toInventory:(NSMutableArray*)inventory mapVersion:(NSInteger)mapVersion
 {
     // get free slots
     NSMutableIndexSet *freeSlots = [NSMutableIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 36)];
@@ -175,10 +198,17 @@ typedef enum : NSInteger {
     }
     
     // add items
+    // 1.7: no data version, id 358
+    // 1.8: no data version, id minecraft:filled_map
+    // 1.9: has data version
+    // 1.13: id is int instead of short, stored in map tag instead of damage
+    id mapID = mapVersion == 0 ? NBTShort(358) : @"minecraft:filled_map";
     for (NSUInteger i=0; i < mapRange.length; i++) {
+        NSInteger mapNumber = mapRange.location+i;
         [inventory addObject:@{@"Slot": NBTByte(freeSlots.firstIndex),
                                @"id": mapID,
-                               @"Damage": NBTShort(mapRange.location+i),
+                               @"Damage": NBTShort(mapNumber),
+                               @"tag": @{@"map": NBTInt((int)mapNumber)},
                                @"Count": NBTByte(1)
                                }];
         [freeSlots removeIndex:freeSlots.firstIndex];

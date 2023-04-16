@@ -384,6 +384,10 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
     for(int i=0; i < paletteMax; i++) {
         palette[@(blockNames[i])] = NBTByte(i);
     }
+    if (paletteVersion == MinecraftPosterPalette1_19) {
+        [palette removeObjectForKey:@"glow_lichen"];
+        palette[@"verdant_froglight"] = NBTByte(61);
+    }
 
     NSDictionary *schematic = @{@"Height": NBTShort(2),
                                 @"Width": NBTShort(self.size.width),

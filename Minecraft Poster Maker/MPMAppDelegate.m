@@ -8,8 +8,13 @@
 
 #import "MPMAppDelegate.h"
 #import <NBTKit/NBTKit.h>
-
+#import "NSImage+MinecraftPosterMaker.h"
 extern float greenScale;
+
+typedef enum : NSInteger {
+    SchematicFormatMCEdit,
+    SchematicFormatSponge
+} SchematicFormat;
 
 @implementation MPMAppDelegate
 
@@ -19,6 +24,7 @@ extern float greenScale;
                                @"liq_quality": @80,
                                @"liq_dither_level": @1.0,
                                @"mapVersion": @(MinecraftPosterPalette1_19),
+                               @"schematicFormat": @(SchematicFormatSponge),
                                @"useFlatPalette": @NO
                                };
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
@@ -213,21 +219,35 @@ extern float greenScale;
 
 #pragma Export Schematic
 
+- (NSString*)extensionForSchematicFormat:(SchematicFormat)schematicFormat
+{
+    if (schematicFormat == SchematicFormatMCEdit) {
+        return @"schematic";
+    } else if (schematicFormat == SchematicFormatSponge) {
+        return @"schem";
+    } else {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Invalid schematic format" userInfo:nil];
+    }
+}
+
 - (IBAction)exportSchematic:(id)sender
 {
-    NSData *schematicData = self.imageView.schematicData;
+    SchematicFormat schematicFormat = (SchematicFormat)[[NSUserDefaults standardUserDefaults] integerForKey:@"schematicFormat"];
+    NSDictionary<NSString*,NSData*> *schematicData = self.imageView.schematicData;
+    NSString *extension = [self extensionForSchematicFormat:schematicFormat];
     
-    if (schematicData == nil) {
+    if (schematicData[extension] == nil) {
         NSBeep();
         return;
     }
-    
+
     NSSavePanel *savePanel = [NSSavePanel savePanel];
-    savePanel.allowedFileTypes = @[@"schematic"];
+    savePanel.allowedFileTypes = @[extension];
+    savePanel.extensionHidden = NO;
     
     [savePanel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse result) {
         if (result == NSFileHandlingPanelOKButton) {
-            [schematicData writeToURL:savePanel.URL options:0 error:NULL];
+            [schematicData[extension] writeToURL:savePanel.URL options:0 error:NULL];
         }
     }];
 }

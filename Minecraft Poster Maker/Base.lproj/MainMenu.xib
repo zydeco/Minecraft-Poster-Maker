@@ -657,15 +657,16 @@
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="80" y="-72"/>
         </menu>
-        <window title="Minecraft Poster Maker" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
+        <window title="Minecraft Poster Maker" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="477" height="338"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="477" height="338"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <imageView focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" mirrorLayoutDirectionWhenInternationalizing="never" translatesAutoresizingMaskIntoConstraints="NO" id="fgQ-1Y-6Lc" customClass="MPMImageView">
                         <rect key="frame" x="-3" y="-3" width="483" height="344"/>
@@ -716,17 +717,17 @@
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
-        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="dSA-7j-pVY">
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="dSA-7j-pVY">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="121" y="129" width="400" height="223"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <rect key="contentRect" x="121" y="129" width="400" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <view key="contentView" id="fUI-Vz-s3I">
-                <rect key="frame" x="0.0" y="0.0" width="400" height="223"/>
+                <rect key="frame" x="0.0" y="0.0" width="400" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pqn-p9-nZP">
-                        <rect key="frame" x="138" y="175" width="244" height="24"/>
+                        <rect key="frame" x="138" y="222" width="244" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="1" maxValue="10" doubleValue="5" tickMarkPosition="below" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="PU3-v8-Ldz"/>
                         <connections>
@@ -743,7 +744,7 @@
                         </connections>
                     </slider>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uuh-Gx-md3">
-                        <rect key="frame" x="138" y="138" width="244" height="24"/>
+                        <rect key="frame" x="138" y="185" width="244" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="80" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="3qV-i8-lsD"/>
                         <connections>
@@ -760,7 +761,7 @@
                         </connections>
                     </slider>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZCv-wn-DLk">
-                        <rect key="frame" x="138" y="98" width="244" height="24"/>
+                        <rect key="frame" x="138" y="145" width="244" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="below" numberOfTickMarks="5" sliderType="linear" id="W8Z-Gg-8ry"/>
                         <connections>
@@ -777,7 +778,7 @@
                         </connections>
                     </slider>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y0Z-ew-Qpj">
-                        <rect key="frame" x="18" y="183" width="116" height="17"/>
+                        <rect key="frame" x="18" y="230" width="116" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Speed" id="otp-Ie-c0I">
                             <font key="font" metaFont="system"/>
@@ -786,7 +787,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OUD-Hp-gus">
-                        <rect key="frame" x="18" y="143" width="116" height="17"/>
+                        <rect key="frame" x="18" y="190" width="116" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Quality" id="1Zh-3i-KBQ">
                             <font key="font" metaFont="system"/>
@@ -795,7 +796,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lz-Je-aHK">
-                        <rect key="frame" x="18" y="103" width="116" height="17"/>
+                        <rect key="frame" x="18" y="150" width="116" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Dithering" id="nTp-i0-yDf">
                             <font key="font" metaFont="system"/>
@@ -805,7 +806,7 @@
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pg8-1Q-8mB">
                         <rect key="frame" x="14" y="13" width="147" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Reset to Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FWf-fv-4iJ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -815,7 +816,7 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YGh-Yz-W9j">
-                        <rect key="frame" x="18" y="63" width="116" height="17"/>
+                        <rect key="frame" x="18" y="110" width="116" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Minecraft version" id="xbl-oH-eHt">
                             <font key="font" metaFont="system"/>
@@ -823,6 +824,24 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yPk-uo-5NY">
+                        <rect key="frame" x="291" y="22" width="91" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="check" title="Flat Palette" bezelStyle="regularSquare" imagePosition="left" inset="2" id="yri-7E-vAV">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="qUA-cq-yxO" name="value" keyPath="values.useFlatPalette" id="dH9-0k-xLH">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="0"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="0"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="0"/>
+                                    <integer key="NSNullPlaceholder" value="0"/>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
                     <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i4d-wS-uVD">
                         <rect key="frame" x="153" y="106" width="229" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -850,27 +869,32 @@
                             </binding>
                         </connections>
                     </segmentedControl>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yPk-uo-5NY">
-                        <rect key="frame" x="291" y="22" width="91" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="check" title="Flat Palette" bezelStyle="regularSquare" imagePosition="left" inset="2" id="yri-7E-vAV">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CT9-9K-zNp">
+                        <rect key="frame" x="209" y="66" width="120" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="ujF-Of-RfE">
                             <font key="font" metaFont="system"/>
-                        </buttonCell>
+                            <segments>
+                                <segment label="MCEdit"/>
+                                <segment label="Sponge" selected="YES" tag="1"/>
+                            </segments>
+                        </segmentedCell>
                         <connections>
-                            <binding destination="qUA-cq-yxO" name="value" keyPath="values.useFlatPalette" id="dH9-0k-xLH">
-                                <dictionary key="options">
-                                    <integer key="NSMultipleValuesPlaceholder" value="0"/>
-                                    <integer key="NSNoSelectionPlaceholder" value="0"/>
-                                    <integer key="NSNotApplicablePlaceholder" value="0"/>
-                                    <integer key="NSNullPlaceholder" value="0"/>
-                                </dictionary>
-                            </binding>
+                            <binding destination="qUA-cq-yxO" name="selectedIndex" keyPath="values.schematicFormat" id="FLe-Ix-eGb"/>
                         </connections>
-                    </button>
+                    </segmentedControl>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bGV-94-Eku">
+                        <rect key="frame" x="18" y="69" width="116" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Schematic format" id="g2v-lU-4cX">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="346" y="284.5"/>
+            <point key="canvasLocation" x="346" y="308"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="qUA-cq-yxO"/>
         <customView id="paY-Ab-ohz">
@@ -902,7 +926,7 @@
                             <real key="minimum" value="0.0"/>
                         </numberFormatter>
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -911,7 +935,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="player name" drawsBackground="YES" id="ZpV-pL-kk9">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
@@ -937,6 +961,7 @@ enter a player name for multiplayer maps</string>
                     </textFieldCell>
                 </textField>
             </subviews>
+            <point key="canvasLocation" x="191" y="617"/>
         </customView>
     </objects>
 </document>

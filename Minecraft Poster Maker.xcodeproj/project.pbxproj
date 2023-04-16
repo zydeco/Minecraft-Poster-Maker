@@ -338,6 +338,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -547,6 +548,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Minecraft Poster Maker/Minecraft Poster Maker-Prefix.pch";
 				INFOPLIST_FILE = "Minecraft Poster Maker/Minecraft Poster Maker-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Minecraft Poster Maker";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.graphics-design";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.namedfork.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -565,6 +570,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Minecraft Poster Maker/Minecraft Poster Maker-Prefix.pch";
 				INFOPLIST_FILE = "Minecraft Poster Maker/Minecraft Poster Maker-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Minecraft Poster Maker";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.graphics-design";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.namedfork.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

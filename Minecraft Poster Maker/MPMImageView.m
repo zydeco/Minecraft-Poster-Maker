@@ -83,9 +83,19 @@
     return [super image].mapData;
 }
 
-- (NSData *)schematicData
+- (NSDictionary<NSString*,NSData*> *)schematicData
 {
-    return [super image].schematicData;
+    MinecraftPosterPalette palette = [[NSUserDefaults standardUserDefaults] integerForKey:@"mapVersion"];
+    NSMutableDictionary *schematics = [NSMutableDictionary dictionaryWithCapacity:2];
+    NSData *schematic = [[super image] schematicData:palette];
+    if (schematic != nil) {
+        schematics[@"schematic"] = schematic;
+    }
+    NSData *schem = [[super image] schemData:palette];
+    if (schem != nil) {
+        schematics[@"schem"] = schem;
+    }
+    return schematics;
 }
 
 - (BOOL)resignFirstResponder

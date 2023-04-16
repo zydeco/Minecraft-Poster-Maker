@@ -82,6 +82,72 @@ static const uint16_t mapColorToBlocks[] = { // high byte = data, low byte = blo
     0xF0B8, // Raw Iron Block
     0xF0B9, // Glow Lichen, Verdant froglight (1.19)
 };
+
+static const char * blockNames[] = {
+    "air",
+    "grass_block",
+    "sandstone",
+    "cobweb",
+    "redstone_block",
+    "packed_ice",
+    "iron_block",
+    "oak_leaves",
+    "snow_block",
+    "clay",
+    "dirt",
+    "cobblestone",
+    "water",
+    "oak_planks",
+    "quartz_block",
+    "orange_wool",
+    "magenta_wool",
+    "light_blue_wool",
+    "yellow_wool",
+    "lime_wool",
+    "pink_wool",
+    "gray_wool",
+    "light_gray_wool",
+    "cyan_wool",
+    "purple_wool",
+    "blue_wool",
+    "brown_wool",
+    "green_wool",
+    "red_wool",
+    "black_wool",
+    "gold_block",
+    "diamond_block",
+    "lapis_block",
+    "emerald_block",
+    "podzol",
+    "netherrack",
+    "white_terracotta",
+    "orange_terracotta",
+    "magenta_terracotta",
+    "light_blue_terracotta",
+    "yellow_terracotta",
+    "lime_terracotta",
+    "pink_terracotta",
+    "gray_terracotta",
+    "light_gray_terracotta",
+    "cyan_terracotta",
+    "purple_terracotta",
+    "blue_terracotta",
+    "brown_terracotta",
+    "green_terracotta",
+    "red_terracotta",
+    "black_terracotta",
+    // 1.16+
+    "crimson_nylium",
+    "crimson_stem",
+    "crimson_hyphae",
+    "warped_nylium",
+    "warped_stem",
+    "warped_hyphae",
+    "warped_wart_block",
+    // 1.17+
+    "deepslate",
+    "raw_iron_block",
+    "glow_lichen" // verdant_froglight in 1.19
 };
 
 static const char *mapDataKey = "mcMapBytes";
@@ -105,6 +171,7 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
 {
     NSLog(@"%s", message);
 }
+
 
 @implementation NSImage (MinecraftPosterMaker)
 
@@ -235,7 +302,7 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
     return maps.copy;
 }
 
-- (NSData*)schematicData
+- (NSData*)schematicData:(MinecraftPosterPalette)paletteVersion
 {
     NSData *mapData = objc_getAssociatedObject(self, mapDataKey);
     if (mapData == nil) return nil;
@@ -251,6 +318,10 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
         for (int z=0; z < length; z++) {
             uint8_t mapValue = mapBytes[(z*length) + x];
             uint16_t blockValue = mapColorToBlocks[(mapValue / 4) - 1];
+            if ((blockValue & 0xF000) == 0xF000) {
+                // >1.13 blocks not supported
+                return nil;
+            }
             blockBytes[(0*length + z)*width + x] = 1; // stone layer
             blockBytes[(1*length + z)*width + x] = blockValue & 0x00FF;
             dataBytes[(1*length + z)*width + x] = (blockValue & 0x0F00) >> 8;
@@ -268,6 +339,61 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
                                 };
     NSError *error = nil;
     NSData *schematicData = [NBTKit dataWithNBT:schematic name:@"Schematic" options:0 error:&error];
+    return schematicData;
+}
+
+- (NSData*)schemData:(MinecraftPosterPalette)paletteVersion
+{
+    NSData *mapData = objc_getAssociatedObject(self, mapDataKey);
+    if (mapData == nil) return nil;
+    size_t width = self.size.width;
+    size_t length = self.size.height;
+    NSUInteger numBlocks = width * length;
+    NSMutableData *blocks = [NSMutableData dataWithLength:numBlocks * 2];
+
+    const uint8_t *mapBytes = mapData.bytes;
+    uint8_t *blockBytes = blocks.mutableBytes;
+    for (int x=0; x < width; x++) {
+        for (int z=0; z < length; z++) {
+            uint8_t mapValue = mapBytes[(z*length) + x];
+            uint8_t blockValue = (mapValue / 4);
+            blockBytes[(0*length + z)*width + x] = 11; // stone layer
+            blockBytes[(1*length + z)*width + x] = blockValue;
+        }
+    }
+
+    int paletteMax = 0;
+    switch (paletteVersion) {
+        case MinecraftPosterPalette1_7_2:
+        case MinecraftPosterPalette1_8_1:
+            paletteMax = 36;
+            break;
+        case MinecraftPosterPalette1_12:
+            paletteMax = 52;
+            break;
+        case MinecraftPosterPalette1_16:
+            paletteMax = 59;
+            break;
+        case MinecraftPosterPalette1_17:
+        case MinecraftPosterPalette1_19:
+        default:
+            paletteMax = 62;
+            break;
+    }
+    NSMutableDictionary *palette = [NSMutableDictionary dictionaryWithCapacity:64];
+    for(int i=0; i < paletteMax; i++) {
+        palette[@(blockNames[i])] = NBTByte(i);
+    }
+
+    NSDictionary *schematic = @{@"Height": NBTShort(2),
+                                @"Width": NBTShort(self.size.width),
+                                @"Length": NBTShort(self.size.height),
+                                @"Version": NBTInt(1),
+                                @"Palette": palette,
+                                @"BlockData": blocks
+                                };
+    NSError *error = nil;
+    NSData *schematicData = [NBTKit dataWithNBT:schematic name:@"Schematic" options:NBTCompressed error:&error];
     return schematicData;
 }
 

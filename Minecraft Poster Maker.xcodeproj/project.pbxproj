@@ -90,6 +90,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		280ACF1229EC531700220CF7 /* Minecraft Poster Maker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Minecraft Poster Maker.entitlements"; sourceTree = "<group>"; };
 		284CB27B184BA69200192352 /* MPMImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMImageView.h; sourceTree = "<group>"; };
 		284CB27C184BA69200192352 /* MPMImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMImageView.m; sourceTree = "<group>"; };
 		287A8A6E2046FAB800D0ECFA /* map_colors_1_7_2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = map_colors_1_7_2.h; sourceTree = "<group>"; };
@@ -234,6 +235,7 @@
 		28F5BC0F184B9CF100BA9A69 /* Minecraft Poster Maker */ = {
 			isa = PBXGroup;
 			children = (
+				280ACF1229EC531700220CF7 /* Minecraft Poster Maker.entitlements */,
 				28B72B14184D12A2001AC8A5 /* libimagequant */,
 				28F5BC1B184B9CF100BA9A69 /* MPMAppDelegate.h */,
 				28F5BC1C184B9CF100BA9A69 /* MPMAppDelegate.m */,
@@ -571,10 +573,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Minecraft Poster Maker/Minecraft Poster Maker.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = UJXNDZ5TNU;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Minecraft Poster Maker/Minecraft Poster Maker-Prefix.pch";
 				INFOPLIST_FILE = "Minecraft Poster Maker/Minecraft Poster Maker-Info.plist";
@@ -593,10 +598,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Minecraft Poster Maker/Minecraft Poster Maker.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = UJXNDZ5TNU;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Minecraft Poster Maker/Minecraft Poster Maker-Prefix.pch";
 				INFOPLIST_FILE = "Minecraft Poster Maker/Minecraft Poster Maker-Info.plist";

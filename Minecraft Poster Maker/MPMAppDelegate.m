@@ -18,7 +18,7 @@ extern float greenScale;
     NSDictionary *defaults = @{@"liq_speed": @8,
                                @"liq_quality": @80,
                                @"liq_dither_level": @1.0,
-                               @"mapVersion": @2,
+                               @"mapVersion": @(MinecraftPosterPalette1_19),
                                @"useFlatPalette": @NO
                                };
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];

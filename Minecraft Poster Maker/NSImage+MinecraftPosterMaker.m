@@ -14,12 +14,14 @@
 #include "map_colors_1_7_2.h"
 #include "map_colors_1_8_1.h"
 #include "map_colors_1_12.h"
+#include "map_colors_1_16.h"
+#include "map_colors_1_17.h"
 
 static const uint16_t mapColorToBlocks[] = { // high byte = data, low byte = block
     0x02, // Grass
     0x18, // Sandstone
     0x1E, // Cobweb
-    0x98, // Redstpme
+    0x98, // Redstone
     0xAE, // Packed Ice
     0x2A, // Iron
     0x712, // Leaves
@@ -66,7 +68,20 @@ static const uint16_t mapColorToBlocks[] = { // high byte = data, low byte = blo
     0xC9F, // Brown Terracotta
     0xD9F, // Green Terracotta
     0xE9F, // Red Terracotta
-    0xF9F // Black Terracotta
+    0xF9F, // Black Terracotta
+    // Added in 1.16 or later, no numeric IDs
+    0xF0B0, // Crimson Nylium
+    0xF0B1, // Crimson Stem
+    0xF0B2, // Crimson Hyphae
+    0xF0B3, // Warped Nylium
+    0xF0B4, // Warped Stem
+    0xF0B5, // Warped Hyphae
+    0xF0B6, // Warped Wart Block
+    // 1.17+
+    0xF0B7, // Deepslate
+    0xF0B8, // Raw Iron Block
+    0xF0B9, // Glow Lichen, Verdant froglight (1.19)
+};
 };
 
 static const char *mapDataKey = "mcMapBytes";
@@ -115,10 +130,24 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
     
     // get palette - default to newest
     const uint8_t *mapColors = mapColors1_12;
-    if (palette == MinecraftPosterPalette1_7_2) {
-        mapColors = mapColors1_7_2;
-    } else if (palette == MinecraftPosterPalette1_8_1) {
-        mapColors = mapColors1_8_1;
+    switch (palette) {
+        case MinecraftPosterPalette1_7_2:
+            mapColors = mapColors1_7_2;
+            break;
+        case MinecraftPosterPalette1_8_1:
+            mapColors = mapColors1_8_1;
+            break;
+        case MinecraftPosterPalette1_12:
+            mapColors = mapColors1_12;
+            break;
+        case MinecraftPosterPalette1_16:
+            mapColors = mapColors1_16;
+            break;
+        case MinecraftPosterPalette1_17:
+        case MinecraftPosterPalette1_19:
+        default:
+            mapColors = mapColors1_17;
+            break;
     }
     int numColors = 0;
     for (int i=0; mapColors[4*i+3]; i++) {

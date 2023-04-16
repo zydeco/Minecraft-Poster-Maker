@@ -98,6 +98,8 @@
 		28B72B21184D12F6001AC8A5 /* viter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = viter.c; sourceTree = "<group>"; };
 		28B72B22184D12F6001AC8A5 /* viter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viter.h; sourceTree = "<group>"; };
 		28E0A1F3184FB34A00B5B77E /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		28E6B28429EB1F97006F5FB4 /* map_colors_1_16.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = map_colors_1_16.h; sourceTree = "<group>"; };
+		28E6B28629EB2285006F5FB4 /* map_colors_1_17.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = map_colors_1_17.h; sourceTree = "<group>"; };
 		28F5BC06184B9CF100BA9A69 /* Minecraft Poster Maker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Minecraft Poster Maker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28F5BC09184B9CF100BA9A69 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		28F5BC0C184B9CF100BA9A69 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -163,6 +165,18 @@
 			path = ../pngquant/lib;
 			sourceTree = "<group>";
 		};
+		28E6B28729EB378A006F5FB4 /* Palettes */ = {
+			isa = PBXGroup;
+			children = (
+				287A8A6E2046FAB800D0ECFA /* map_colors_1_7_2.h */,
+				287A8A702046FB0000D0ECFA /* map_colors_1_8_1.h */,
+				287A8A712046FF2500D0ECFA /* map_colors_1_12.h */,
+				28E6B28429EB1F97006F5FB4 /* map_colors_1_16.h */,
+				28E6B28629EB2285006F5FB4 /* map_colors_1_17.h */,
+			);
+			name = Palettes;
+			sourceTree = "<group>";
+		};
 		28F5BBFD184B9CF100BA9A69 = {
 			isa = PBXGroup;
 			children = (
@@ -216,9 +230,7 @@
 				28B72B10184CFCB3001AC8A5 /* NSImage+MinecraftPosterMaker.m */,
 				28F5BC21184B9CF200BA9A69 /* Images.xcassets */,
 				28F5BC10184B9CF100BA9A69 /* Supporting Files */,
-				287A8A6E2046FAB800D0ECFA /* map_colors_1_7_2.h */,
-				287A8A702046FB0000D0ECFA /* map_colors_1_8_1.h */,
-				287A8A712046FF2500D0ECFA /* map_colors_1_12.h */,
+				28E6B28729EB378A006F5FB4 /* Palettes */,
 			);
 			path = "Minecraft Poster Maker";
 			sourceTree = "<group>";

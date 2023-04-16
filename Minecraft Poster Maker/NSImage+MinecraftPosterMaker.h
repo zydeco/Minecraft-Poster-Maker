@@ -11,7 +11,10 @@
 typedef enum : NSUInteger {
     MinecraftPosterPalette1_7_2,
     MinecraftPosterPalette1_8_1,
-    MinecraftPosterPalette1_12
+    MinecraftPosterPalette1_12,
+    MinecraftPosterPalette1_16,
+    MinecraftPosterPalette1_17,
+    MinecraftPosterPalette1_19
 } MinecraftPosterPalette;
 
 @interface NSImage (MinecraftPosterMaker)

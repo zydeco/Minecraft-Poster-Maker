@@ -32,6 +32,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		280ACF0E29EC528B00220CF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28F5BC3D184B9FC600BA9A69 /* NBTKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 284B47F624D743DF001DDA26;
+			remoteInfo = "NBTKit-iOS";
+		};
+		280ACF1029EC528B00220CF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28F5BC3D184B9FC600BA9A69 /* NBTKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 28B76E9324D409D20001C144;
+			remoteInfo = nbtdump;
+		};
 		28E0A1ED184F9EB100B5B77E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 28F5BC3D184B9FC600BA9A69 /* NBTKit.xcodeproj */;
@@ -269,7 +283,9 @@
 			isa = PBXGroup;
 			children = (
 				28F5BC43184B9FC600BA9A69 /* NBTKit.framework */,
+				280ACF0F29EC528B00220CF7 /* NBTKit-iOS.framework */,
 				28F5BC45184B9FC600BA9A69 /* NBTKitTests.xctest */,
+				280ACF1129EC528B00220CF7 /* nbtdump */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -360,6 +376,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		280ACF0F29EC528B00220CF7 /* NBTKit-iOS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = "NBTKit-iOS.framework";
+			remoteRef = 280ACF0E29EC528B00220CF7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		280ACF1129EC528B00220CF7 /* nbtdump */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = nbtdump;
+			remoteRef = 280ACF1029EC528B00220CF7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		28F5BC43184B9FC600BA9A69 /* NBTKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;

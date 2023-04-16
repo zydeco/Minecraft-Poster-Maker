@@ -4,7 +4,7 @@ Convert images into Minecraft maps to use as posters.
 
 ### Requirements
 
-* Mac OS X 10.8 or newer
+* Mac OS X 10.13 or newer
 * Minecraft Java Edition 1.7.2 or newer
 
 ### Features
@@ -15,6 +15,8 @@ Convert images into Minecraft maps to use as posters.
 * Adjust conversion speed, dithering and quality in Preferences
 * Choose the Map ID, or have it chosen automatically
 * Export as schematic
+  * MCEdit `.schematic`
+  * Sponge `.schem`
 
 ### Usage
 
@@ -22,3 +24,5 @@ Convert images into Minecraft maps to use as posters.
 2. Adjust the size if needed (shown as number of maps)
 3. Choose Save from the File menu (or ⌘S) and save into a Minecraft world
 4. Open the world in Minecraft, and place the maps in item frames appropriately
+
+Alternatively, export as a schematic and load it with WorldEdit or Litematica.

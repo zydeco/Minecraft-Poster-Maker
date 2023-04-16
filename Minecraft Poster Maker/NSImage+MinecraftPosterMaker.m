@@ -181,7 +181,7 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
     return NSMakeSize((NSUInteger)(self.size.width*scale + 127) &~ 127, (NSUInteger)(self.size.height*scale + 127) &~ 127);
 }
 
-- (NSImage*)posterImageWithScale:(CGFloat)scale palette:(MinecraftPosterPalette)palette
+- (NSImage*)posterImageWithScale:(CGFloat)scale palette:(MinecraftPosterPalette)palette flat:(BOOL)useFlatPalette speed:(NSInteger)speed quality:(NSInteger)quality dithering:(float)ditherLevel
 {
     CGImageRef baseImage = [self CGImageForProposedRect:NULL context:NULL hints:NULL];
     // round size up to multiple of 128
@@ -223,7 +223,7 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
     
     // use flat palette?
     uint8_t *flatPalette = NULL;
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"useFlatPalette"]) {
+    if (useFlatPalette) {
         flatPalette = calloc(numColors / 4, 4);
         for (int i= 0; i < numColors / 4; i++) {
             memcpy(&flatPalette[4*i], &mapColors[4*(4*i+2)], 4);
@@ -232,15 +232,15 @@ void logcb(const liq_attr* attr, const char *message, void* user_info)
     
     // create liq images
     liq_attr *attr = liq_attr_create();
-    liq_set_speed(attr, (int)CLAMP([[NSUserDefaults standardUserDefaults] integerForKey:@"liq_speed"], 1, 10));
-    liq_set_quality(attr, 0, (int)CLAMP([[NSUserDefaults standardUserDefaults] integerForKey:@"liq_quality"], 0, 100));
+    liq_set_speed(attr, (int)CLAMP(speed, 1, 10));
+    liq_set_quality(attr, 0, (int)CLAMP(quality, 0, 100));
     //liq_set_log_callback(attr, logcb, NULL);
     liq_image *paletteImage = liq_image_create_rgba(attr, (void*)(flatPalette ?: mapColors), flatPalette ? numColors / 4 : numColors, 1, 0);
     liq_image *inputImage = liq_image_create_rgba(attr, (void*)CGBitmapContextGetData(ctx), (int)CGBitmapContextGetWidth(ctx), (int)CGBitmapContextGetHeight(ctx), 0);
     liq_result *remap = liq_quantize_image(attr, paletteImage);
     
     if (remap) {
-        liq_set_dithering_level(remap, CLAMP([[NSUserDefaults standardUserDefaults] floatForKey:@"liq_dither_level"], 0.0, 1.0));
+        liq_set_dithering_level(remap, CLAMP(ditherLevel, 0.0, 1.0));
         
         int size = (int)(CGBitmapContextGetWidth(ctx)*CGBitmapContextGetHeight(ctx));
         liq_write_remapped_image(remap, inputImage, (void*)CGBitmapContextGetData(ctx), size);

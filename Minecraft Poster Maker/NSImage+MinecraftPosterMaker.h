@@ -22,7 +22,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, readonly) NSArray* mapData;
 
 - (NSSize)sizeForPosterImageWithScale:(CGFloat)scale;
-- (NSImage*)posterImageWithScale:(CGFloat)scale palette:(MinecraftPosterPalette)palette;
+- (NSImage*)posterImageWithScale:(CGFloat)scale palette:(MinecraftPosterPalette)palette flat:(BOOL)useFlatPalette speed:(NSInteger)speed quality:(NSInteger)quality dithering:(float)ditherLevel;
 - (NSData*)schematicData:(MinecraftPosterPalette)palette;
 - (NSData*)schemData:(MinecraftPosterPalette)palette;
 

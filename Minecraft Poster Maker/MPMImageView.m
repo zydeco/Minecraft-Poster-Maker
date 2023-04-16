@@ -74,7 +74,14 @@
 - (void)_scaleImage:(NSNumber*)force
 {
     if (baseImage && (force.boolValue || !NSEqualSizes(super.image.size, [baseImage sizeForPosterImageWithScale:_scale]))) {
-        [super setImage:[baseImage posterImageWithScale:_scale palette:[[NSUserDefaults standardUserDefaults] integerForKey:@"mapVersion"]]];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSImage *posterImage = [baseImage posterImageWithScale:_scale
+                                                       palette:[defaults integerForKey:@"mapVersion"]
+                                                          flat:[defaults boolForKey:@"useFlatPalette"]
+                                                         speed:[defaults integerForKey:@"liq_speed"]
+                                                       quality:[defaults integerForKey:@"liq_quality"]
+                                                     dithering:[defaults floatForKey:@"liq_dither_level"]];
+        [super setImage:posterImage];
     }
 }
 
